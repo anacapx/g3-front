@@ -1,0 +1,25 @@
+.btn-big {
+    border-radius: 8px;
+    background-color: #25b456;
+    color: #fff;
+    border: none;
+    min-height: 2.5em;
+    width: 20em;
+    height: 7em;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 1.5em;
+}
+
+.btn-big:hover {
+    background-color: #1C8A42;
+
+}
+
