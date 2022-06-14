@@ -87,11 +87,39 @@ export default function useRequestUser() {
     }
   }
 
+  async function update(route, body, id, withToken) {
+    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            ...config,
+          },
+          body: JSON.stringify(body),
+        }
+      )
+      
+      if (!response.ok) {
+        const dataObj = await response.json();
+        throw new Error(dataObj.message);
+      }
+      
+      return response
+      
+    } catch (error) {
+      toast.errorMsg(error.message)
+    }
+  }
+
 
   return {
     post,
     get,
-    del
+    del,
+    update
   }
 
 }

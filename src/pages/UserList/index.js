@@ -17,7 +17,7 @@ import useRequestUser from '../../hooks/useRequestUser'
 function UserList() {
     const [users, setUsers] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
-    const { userId, setUserId, removeUserId } = useGlobal();
+    const { userId, setUserId, userGlobal, setUserGlobal } = useGlobal();
     const navigate = useNavigate()
     const { get, del } = useRequestUser();
 
@@ -35,6 +35,13 @@ function UserList() {
                 setUsers(response)
             })
         }
+    }
+
+    async function updateUser(u) {
+        setUserGlobal(u)
+        console.log(u)
+        navigate("/user/update")
+
     }
 
     function makeOrder(userId) {
@@ -59,18 +66,18 @@ function UserList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(user => (
-                            <tr key={user.id}>
-                                <th scope="row">{user.id}</th>
-                                <td>{user.name}</td>
-                                <td>{user.cpf}</td>
-                                <td>{user.phone}</td>
-                                <td>{user.email}</td>
-                                <td>{user.birthday}</td>
+                        {users.map(u => (
+                            <tr key={u.id}>
+                                <th scope="row">{u.id}</th>
+                                <td>{u.name}</td>
+                                <td>{u.cpf}</td>
+                                <td>{u.phone}</td>
+                                <td>{u.email}</td>
+                                <td>{u.birthday}</td>
                                 <td>
-                                    <button onClick={() => { deleteUser(user.id) }}>Excluir</button>
-                                    <button >Alterar</button>
-                                    <button onClick={() => { makeOrder(user.id) }}>Fazer pedido</button>
+                                    <button onClick={() => { deleteUser(u.id) }}>Excluir</button>
+                                    <button onClick={() => { updateUser(u) }}>Alterar</button>
+                                    <button onClick={() => { makeOrder(u.id) }}>Fazer pedido</button>
                                 </td>
                             </tr>
                         ))}
