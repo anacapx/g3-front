@@ -10,6 +10,7 @@ function useGlobalProvider() {
     const [token, setToken, removeToken] = useState(localStorage.getItem('token') || '')
     const [authenticated, setAuthenticated] = useState(false)
     const [userId, setUserId, removeUserId] = useState()
+    const [userGlobal, setUserGlobal] = useState()
     const [loggedAdm, setloggedAdm, removeloggedAdm] = useState()
 
     const apiURL = {
@@ -51,7 +52,9 @@ function useGlobalProvider() {
         apiURL,
         userId, 
         setUserId, 
-        removeUserId
+        removeUserId,
+        userGlobal, 
+        setUserGlobal
     }
 
 }

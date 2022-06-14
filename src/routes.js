@@ -46,7 +46,7 @@ const Routes = () => {
           <Route path="/user/page" element={<User />} />
           <Route path="/users" element={<UserList />} />
           <Route path="/user/register" element={<UserRegister />} />
-          {/* <Route path="/user/update" element={<UserUpdate />} /> */}
+          <Route path="/user/update" element={<UserUpdate />} />
           <Route path="/user/search" element={<UserSearch />} />
 
           <Route path="*" element={<Home />} />
