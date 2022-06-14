@@ -5,10 +5,10 @@ import styles from './Navbar.module.css'
 
 import logo from '../../assets/order-preto.png'
 
-import { Context } from '../../context/AuthContext'
+import useGlobal from "../../hooks/useGlobal";
 
 function Navbar() {
-  const { authenticated, logout } = useContext(Context)
+  const { authenticated, logout } = useGlobal();
 
   return (
     <nav className={styles.navbar}>
@@ -20,15 +20,16 @@ function Navbar() {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/user/page">Usuários</Link>
-        </li>
-        <li>
-          <Link to="/order/page">Pedidos</Link>
-        </li>
-
         {authenticated ? (
-          <li className={styles.pointer} onClick={logout}> Logout</li>
+          <>
+            <li>
+              <Link to="/user/page">Usuários</Link>
+            </li>
+            <li>
+              <Link to="/order/page">Pedidos</Link>
+            </li>
+            <li className={styles.pointer} onClick={logout}> Logout</li>
+          </>
         ) : (
           <>
             <li>

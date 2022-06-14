@@ -1,16 +1,15 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 
 import Input from '../../components/form/Input'
 import { Link } from 'react-router-dom'
-
+import toast from '../../helpers/toast'
 import styles from '../../components/form/Form.module.css'
 
-import { Context } from '../../context/AuthContext'
+import useRequestAuth from '../../hooks/useRequestAuth'
 
 function Login() {
-
     const [adm, setAdm] = useState({});
-    const { login } = useContext(Context)
+    const { login } = useRequestAuth()
 
     function handleChange(e) {
         setAdm({ ...adm, [e.target.name]: e.target.value })
@@ -18,7 +17,14 @@ function Login() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        login(adm)
+        loginAdm(adm)
+    }
+
+    async function loginAdm(adm) {
+        if (!adm.email || !adm.password) {
+            return toast.errorMsg("Preencha todos os campos.")
+        }
+        await login(adm, false)
     }
 
     return (
@@ -41,7 +47,7 @@ function Login() {
                     handleOnChange={handleChange}
                 />
 
-                <input type="submit" value="Enviar" />
+                <input type="submit" value="Entrar" />
 
             </form>
 

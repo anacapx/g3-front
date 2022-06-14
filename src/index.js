@@ -10,7 +10,7 @@ import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Container from './components/layout/Container'
 
-import { AuthProvider } from "./context/AuthContext";
+import { GlobalProvider } from "./context/GlobalContext";
 
 import "react-toastify/dist/ReactToastify.css";
 import './index.css';
@@ -18,17 +18,17 @@ import './index.css';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-      <Navbar />
+      <GlobalProvider>
+        <Navbar />
         <Container>
-        
-          <Routes />
-          <ToastContainer limit={1} />
 
-          </Container>
+          <Routes />
+          <ToastContainer limit={3} />
+
+        </Container>
         <Footer />
-        
-      </AuthProvider>
+
+      </GlobalProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

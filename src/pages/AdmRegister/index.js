@@ -1,24 +1,45 @@
 import { useState, useContext } from 'react'
 
+import useRequestsAuth from '../../hooks/useRequestAuth'
+
+import toast from '../../helpers/toast'
+
 import Input from '../../components/form/Input'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import styles from '../../components/form/Form.module.css'
 
-import { Context } from '../../context/AuthContext'
 
-function Register() {
 
-    const [user, setUser] = useState({});
-    const { register } = useContext(Context)
-
+function AdmRegister() {
+    const { post } = useRequestsAuth();
+    const navigate = useNavigate()
+    const [adm, setAdm] = useState({});
+    
     function handleChange(e) {
-        setUser({ ...user, [e.target.name]: e.target.value })
+        setAdm({ ...adm, [e.target.name]: e.target.value })
     }
 
     function handleSubmit(e) {
         e.preventDefault()
-        register(user)
+        AddAdm(adm)
+    }
+
+    async function AddAdm(adm) {
+        if (!adm.name || !adm.email || !adm.password || !adm.confirmpassword) {
+            return toast.errorMsg("Preencha todos os campos")
+        }
+
+        if (adm.password !== adm.confirmpassword) {
+            return toast.errorMsg("Os campos de Senha e Confirmação de senha devem ser iguais")
+        }
+
+        const resp = await post("/admin", adm, false)
+
+        if (resp) {
+          navigate("/login");
+          toast.successMsg("Administrador cadastrado com sucesso");
+        }  
     }
 
     return (
@@ -68,4 +89,4 @@ function Register() {
     )
 }
 
-export default Register;
+export default AdmRegister;

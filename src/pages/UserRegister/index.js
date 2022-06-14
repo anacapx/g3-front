@@ -1,16 +1,19 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 
-import Input from '../../components/form/Input'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import styles from '../../components/form/Form.module.css'
+import useRequestUser from '../../hooks/useRequestUser'
 
-import { Context } from '../../context/AuthContext'
+import toast from '../../helpers/toast'
+
+import UserForm from '../../components/form/UserForm'
+import formStyles from '../../components/form/Form.module.css'
 
 function UserRegister() {
+  const { post} = useRequestUser();
+  const navigate = useNavigate()
 
   const [user, setUser] = useState({});
-  const { register } = useContext(Context)
 
   function handleChange(e) {
     setUser({ ...user, [e.target.name]: e.target.value })
@@ -18,56 +21,36 @@ function UserRegister() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    register(user)
+    AddUser(user)
+  }
+
+  async function AddUser(user) {
+    const formData = new FormData
+
+    await Object.keys(user).forEach((key) => {
+      formData.append(key, user[key])
+    })
+
+    if(!user.name || !user.email || !user.cpf || !user.phone || !user.birthday){
+      return toast.errorMsg("Preencha todos os campos.")
+    }
+
+    const resp = await post('/user', user, true)
+
+    if (resp) {
+      navigate("/users");
+      toast.successMsg("Usuário cadastrado com sucesso");
+    }  
   }
 
   return (
-    <section className={styles.form_container}>
+    <section className={formStyles.form_container}>
       <h1>Cadastro de Usuário</h1>
-      <form onSubmit={handleSubmit}>
-        <Input
-          text="Nome"
-          type="text"
-          name="name"
-          placeholder=""
-          handleOnChange={handleChange}
-        />
-
-        <Input
-          text="E-mail"
-          type="email"
-          name="email"
-          placeholder=""
-          handleOnChange={handleChange}
-        />
-
-        <Input
-          text="CPF"
-          type="number"
-          name="cpf"
-          placeholder=""
-          handleOnChange={handleChange}
-        />
-
-        <Input
-          text="Telefone"
-          type="phone"
-          name="phone"
-          placeholder=""
-          handleOnChange={handleChange}
-        />
-
-        <Input
-          text="Data de nascimento"
-          type="date"
-          name="birthday"
-          placeholder=""
-          handleOnChange={handleChange}
-        />
-
-        <input type="submit" value="Salvar" />
-
-      </form>
+      <UserForm
+        handleSubmit={AddUser}
+        userData=''
+        btnText='Salvar Usuário'
+      />
 
     </section>
   )

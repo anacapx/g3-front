@@ -6,7 +6,7 @@ export default function BigButton(props) {
   return (
     <a
       href={link}
-      class="btn-big">
+      className="btn-big">
       {text}
     </a>
   );

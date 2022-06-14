@@ -1,7 +1,6 @@
 import {
   Routes as Switch,
-  Route,
-  Navigate,
+  Route
 } from "react-router-dom";
 
 import Home from './pages/Home'
@@ -18,20 +17,26 @@ import UserRegister from './pages/UserRegister'
 import UserUpdate from './pages/UserUpdate'
 import UserSearch from './pages/UserSearch'
 
-
-import { useAuth } from "./context/AuthContext";
+import useGlobal from "./hooks/useGlobal";
 
 const Routes = () => {
-  //const { isAuthenticated } = useAuth();
-
-  const isAuthenticated = false;
+  const { authenticated } = useGlobal();
 
   return (
     <>
-      {!isAuthenticated ? (
+      {!authenticated ? (
         <Switch>
           <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<AdmRegister />} />
+          <Route path="*" element={<Home />} />
+        </Switch>
+      ) : (
+        <Switch>
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
+
           <Route path="/admin" element={<AdmRegister />} />
 
           <Route path="/order/page" element={<Order />} />
@@ -39,27 +44,17 @@ const Routes = () => {
           <Route path="/order/register" element={<OrderRegister />} />
 
           <Route path="/user/page" element={<User />} />
-          <Route path="/user/register" element={<UserRegister />} />
           <Route path="/users" element={<UserList />} />
-          <Route path="/user/update" element={<UserUpdate />} />
+          <Route path="/user/register" element={<UserRegister />} />
+          {/* <Route path="/user/update" element={<UserUpdate />} /> */}
           <Route path="/user/search" element={<UserSearch />} />
 
+          <Route path="*" element={<Home />} />
 
-          <Route path="*" element={<Login />} />
-        </Switch>
-      ) : (
-        <Switch>
-          <Route path="/orders" element={<Order />} />
-
-
-          <Route path="*" element={<Navigate to="/admin" replace />} />
         </Switch>
       )}
     </>
   );
 };
-
-
-
 
 export default Routes;
