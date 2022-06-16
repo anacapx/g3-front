@@ -64,29 +64,29 @@ function UserSearch() {
         <section>
             <h1>Busca de Usuários</h1>
 
-            <fieldset class="form-group" onChange={(event) => setSearchParam(event.target.value)}>
-                <legend class="mt-4">Buscar</legend>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" id="id" value="id" />
+            <fieldset className="form-group" onChange={(event) => setSearchParam(event.target.value)}>
+                <legend className="mt-4">Buscar</legend>
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input type="radio" className="form-check-input" name="optionsRadios" id="id" value="id" />
                         Id
                     </label>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" id="name" value="name" />
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input type="radio" className="form-check-input" name="optionsRadios" id="name" value="name" />
                         Nome
                     </label>
                 </div>
-                <div class="form-check disabled">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" id="email" value="email" />
+                <div className="form-check disabled">
+                    <label className="form-check-label">
+                        <input type="radio" className="form-check-input" name="optionsRadios" id="email" value="email" />
                         E-mail
                     </label>
                 </div>
-                <div class="form-check disabled">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" id="cpf" value="cpf" />
+                <div className="form-check disabled">
+                    <label className="form-check-label">
+                        <input type="radio" className="form-check-input" name="optionsRadios" id="cpf" value="cpf" />
                         CPF
                     </label>
                 </div>

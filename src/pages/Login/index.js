@@ -4,6 +4,7 @@ import Input from '../../components/form/Input'
 import { Link } from 'react-router-dom'
 import toast from '../../helpers/toast'
 import styles from '../../components/form/Form.module.css'
+import './style.css';
 
 import useRequestAuth from '../../hooks/useRequestAuth'
 
@@ -52,7 +53,7 @@ function Login() {
             </form>
 
             <p>
-                Não tem cadastro? <Link to="/admin" >Registre-se</Link>
+                Não tem cadastro? <Link to="/admin" ><span className='p_span'>Registre-se</span></Link>
             </p>
         </section>
     )

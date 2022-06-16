@@ -8,8 +8,9 @@ function OrderList() {
     const { get } = useRequestOrder();
 
     useEffect(() => {
-        const resp = get('/order', true).then((response) => {
+        const resp = get('/order?page=0&size=100', true).then((response) => {
             setOrders(response)
+            console.log(response)
         })
 
     }, [token])
@@ -23,7 +24,7 @@ function OrderList() {
                         <tr>
                             <th scope="col">Id Pedido</th>
                             <th scope="col">Id Usuário</th>
-                            <th scope="col">Nome Usuário</th>
+                            {/* <th scope="col">Nome Usuário</th> */}
                             <th scope="col">Produtos</th>
                             <th scope="col">Valor total</th>
                             <th scope="col">Data</th>
@@ -34,8 +35,8 @@ function OrderList() {
                         {orders.map(order => (
                             <tr key={order.id}>
                                 <th order="row">{order.id}</th>
-                                <td>{order.user.id}</td>
-                                <td>{order.user.name}</td>
+                                <td>{order.userId}</td>
+                                {/* <td>{order.user.name}</td> */}
                                 <td>{order.products}</td>
                                 <td>{order.value}</td>
                                 <td>{order.date}</td>

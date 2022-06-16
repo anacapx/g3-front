@@ -22,14 +22,14 @@ function UserList() {
     const { get, del } = useRequestUser();
 
     useEffect(() => {
-        const resp = get('/user', true).then((response) => {
+        const resp = get('/user?page=0&size=100', true).then((response) => {
             setUsers(response)
         })
     }, [token])
 
     async function deleteUser(id) {
         const data = await del('/user', id, true)
-        if(data){
+        if (data) {
             toast.successMsg("Usuário deletado com sucesso.")
             const resp = get('/user', true).then((response) => {
                 setUsers(response)

@@ -9,7 +9,7 @@ export default function useRequestUser() {
   const { token } = useGlobal();
 
   async function post(route, body, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}`,
@@ -37,7 +37,7 @@ export default function useRequestUser() {
 
 
   async function get(route, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}`,
@@ -123,7 +123,7 @@ export default function useRequestUser() {
   }
 
   async function del(route, id, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
     try {
       const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}/${id}`,
         {
@@ -146,7 +146,7 @@ export default function useRequestUser() {
   }
 
   async function update(route, body, id, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}/${id}`,
