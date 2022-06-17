@@ -39,7 +39,6 @@ function UserSearch() {
             const searchResult = []
             searchResult.push(resp)
             setSearchResultView(searchResult)
-            console.log(searchResult)
         }
     }
 
@@ -55,7 +54,6 @@ function UserSearch() {
                 toast.errorMsg("Sem resultados para a pesquisa realizada")
             }
 
-            console.log(resp)
         }
     }
 
@@ -120,7 +118,7 @@ function UserSearch() {
                     </tr>
                 </thead>
                 <tbody>
-                    {searchResultView.map(u => (
+                    {searchResultView ? searchResultView.map(u => (
                         <tr key={u.id}>
                             <th scope="row">{u.id}</th>
                             <td>{u.name}</td>
@@ -134,7 +132,7 @@ function UserSearch() {
                                     <button onClick={() => { makeOrder(u.id) }}>Fazer pedido</button>
                                 </td> */}
                         </tr>
-                    ))}
+                    )) : ""}
                 </tbody>
             </table>
             </>) : (

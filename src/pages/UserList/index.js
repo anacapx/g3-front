@@ -31,7 +31,7 @@ function UserList() {
         const data = await del('/user', id, true)
         if (data) {
             toast.successMsg("Usuário deletado com sucesso.")
-            const resp = get('/user', true).then((response) => {
+            const resp = get('/user?page=0&size=100', true).then((response) => {
                 setUsers(response)
             })
         }
@@ -39,7 +39,6 @@ function UserList() {
 
     async function updateUser(u) {
         setUserGlobal(u)
-        console.log(u)
         navigate("/user/update")
 
     }
@@ -66,7 +65,7 @@ function UserList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(u => (
+                        {users ? users.map(u => (
                             <tr key={u.id}>
                                 <th scope="row">{u.id}</th>
                                 <td>{u.name}</td>
@@ -80,7 +79,7 @@ function UserList() {
                                     <button onClick={() => { makeOrder(u.id) }}>Fazer pedido</button>
                                 </td>
                             </tr>
-                        ))}
+                        )) : ""}
                     </tbody>
                 </table>
             </div>

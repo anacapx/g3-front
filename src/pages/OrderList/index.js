@@ -10,7 +10,6 @@ function OrderList() {
     useEffect(() => {
         const resp = get('/order?page=0&size=100', true).then((response) => {
             setOrders(response)
-            console.log(response)
         })
 
     }, [token])
@@ -32,7 +31,7 @@ function OrderList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {orders.map(order => (
+                        {orders ? orders.map(order => (
                             <tr key={order.id}>
                                 <th order="row">{order.id}</th>
                                 <td>{order.userId}</td>
@@ -42,7 +41,7 @@ function OrderList() {
                                 <td>{order.date}</td>
                                 <td>{order.status}</td>
                             </tr>
-                        ))}
+                        )) : ""}
                     </tbody>
                 </table>
             </div>
