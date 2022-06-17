@@ -23,15 +23,14 @@ export default function useRequestOrder() {
       )
 
       const dataObj = await response.json();
-
       if (!response.ok) {
-        throw new Error(dataObj);
+        throw new Error( dataObj.length > 0 ? dataObj[0].errorMessage : dataObj.message);
       }
 
       return dataObj
 
     } catch (error) {
-      toast.errorMsg(error.message)
+      toast.errorMsg(error.message);
     }
   }
 
@@ -55,12 +54,12 @@ export default function useRequestOrder() {
       if (!response.ok) {
         throw new Error(dataObj);
       }
-      
+
       return dataObj
 
     } catch (error) {
-      toast.errorMsg(error.message)
-      
+      toast.errorMsg(error.message.errorMessage)
+
     }
   }
 

@@ -93,7 +93,6 @@ export default function useRequestAuth() {
       }
       return dataObj;
     } catch (error) {
-      console.log(error);
       toast.errorMsg(error.message);
     }
   }

@@ -65,7 +65,7 @@ export default function useRequestUser() {
   }
 
   async function getOne(route, id, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}/${id}`,
@@ -78,7 +78,7 @@ export default function useRequestUser() {
           body: null,
         }
       )
-      console.log(response)
+      // atenção => se não tiver resposta do back, vai pro catch
       const dataObj = await response.json();
 
       if (!response.ok) {
@@ -94,7 +94,7 @@ export default function useRequestUser() {
   }
 
   async function searchUserByParams(route, searchParam, search, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
     http://minhaapi.com/banks?name=nubank
     try {
       const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}/search?${searchParam}=${search}`,
@@ -107,7 +107,6 @@ export default function useRequestUser() {
           body: null,
         }
       )
-      console.log(response)
       const dataObj = await response.json();
 
       if (!response.ok) {
