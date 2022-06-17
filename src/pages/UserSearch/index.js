@@ -104,7 +104,7 @@ function UserSearch() {
 
             {searchResultView.length > 0 ? (
             <>
-            <h2>Resultado da Busca</h2>
+            <span>Resultado da Busca</span>
             <table>
                 <thead>
                     <tr>

@@ -30,13 +30,12 @@ function Login() {
 
     return (
         <section className={styles.form_container}>
-            <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <Input
                     text="E-mail"
                     type="email"
                     name="email"
-                    placeholder=""
+                    placeholder="E-mail"
                     handleOnChange={handleChange}
                 />
 
@@ -44,11 +43,11 @@ function Login() {
                     text="Senha"
                     type="password"
                     name="password"
-                    placeholder=""
+                    placeholder="Senha"
                     handleOnChange={handleChange}
                 />
 
-                <input type="submit" value="Entrar" />
+                <input className='form_btn' type="submit" value="Entrar" />
 
             </form>
 

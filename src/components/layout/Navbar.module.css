@@ -12,18 +12,27 @@
 .navbar_logo {
   display: flex;
   align-items: center;
+  justify-content: baseline;
 }
 
 .navbar_logo img {
-  height: 3em;
+  height: 100px;
   margin-right: .7em;
+  margin-bottom: 10px;
+}
+
+.navbar_logo span {
+  padding-top: 50px;
+  padding-left: 10px;
+  font-size: 40px;
 }
   
 .navbar ul {
   display: flex;
+  margin-top: 40px;
   list-style: none;
   align-items: center;
-  font-size: 1.2em;
+  font-size: 1.6em;
 }
   
 .navbar li {

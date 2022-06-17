@@ -1,6 +1,6 @@
 .btn-big {
     border-radius: 8px;
-    background-color: #25b456;
+    background-color: #EA1D2C;
     color: #fff;
     border: none;
     min-height: 2.5em;
@@ -19,7 +19,7 @@
 }
 
 .btn-big:hover {
-    background-color: #1C8A42;
+    background-color: #EF5753;
 
 }
 

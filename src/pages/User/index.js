@@ -1,20 +1,10 @@
-import { useState, useContext } from 'react'
-
-import Input from '../../components/form/Input'
-import { Link } from 'react-router-dom'
-
-import styles from '../../components/form/Form.module.css'
-
-import { Context } from '../../context/AuthContext'
-
 import BigButton from '../../components/BigButton'
+import "./style.css";
 
 function User() {
 
     return (
-        <section >
-            <h1>Usuários</h1>
-
+        <section className='user_container' >
             <BigButton
                 text="Cadastrar Usuário"
                 link="/user/register"

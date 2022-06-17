@@ -1,17 +1,14 @@
 import useGlobal from "../../hooks/useGlobal";
 import BigButton from "../../components/BigButton";
+import { Link } from 'react-router-dom'
 import './style.css';
 
 function Home() {
-    const { authenticated } = useGlobal();
 
     return (
-        <section >
-            <h1>Home</h1>
-            {authenticated ? (
+        <section className="home_container">
                 <main className="main">
-                    <h2>Bem-vindo(a) !</h2>
-                    {/* TODO: Incluir dinâmicamente nome do adm */}
+                    {/* <span>Olá, Foodlover!</span> */}
                     <BigButton
                         text="Usuários"
                         link="/user/page"
@@ -22,21 +19,6 @@ function Home() {
                         link="/order/page"
                     />
                 </main>
-            ) : (
-                <main className="main">
-                    <h2>Bem-vindo(a) Foodlover!</h2>
-                    <h3>Faça Login ou Registre-se</h3>
-                    <BigButton
-                        text="Login"
-                        link="/login"
-                    />
-
-                    <BigButton
-                        text="Registre-se"
-                        link="/admin"
-                    />
-                </main>
-            )}
         </section>
     )
 }

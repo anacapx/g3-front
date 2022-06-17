@@ -28,7 +28,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="Nome"
                 type="text"
                 name="name"
-                placeholder=""
+                placeholder="Nome"
                 handleOnChange={handleChange}
                 value={user.name || ''}
             />
@@ -37,7 +37,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="E-mail"
                 type="email"
                 name="email"
-                placeholder=""
+                placeholder="E-mail"
                 handleOnChange={handleChange}
                 value={user.email || ''}
             />
@@ -46,7 +46,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="CPF"
                 type="number"
                 name="cpf"
-                placeholder=""
+                placeholder="CPF"
                 handleOnChange={handleChange}
                 value={user.cpf || ''}
             />
@@ -55,7 +55,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="Telefone"
                 type="phone"
                 name="phone"
-                placeholder=""
+                placeholder="Telephone"
                 handleOnChange={handleChange}
                 value={user.phone || ''}
             />
@@ -64,7 +64,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="Data de nascimento"
                 type="date"
                 name="birthday"
-                placeholder=""
+                placeholder="Data de nascimento"
                 handleOnChange={handleChange}
                 value={user.birthday || ''}
             />

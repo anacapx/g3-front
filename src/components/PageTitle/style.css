@@ -1,0 +1,10 @@
+.pageTitle_main {
+    min-width: 100vw;
+    min-height: 100px;
+}
+
+.pageTitle_h1 {
+    padding: 0px 0px 0px 100px;
+    color: #3E3E3E;
+    font-size: 35px;
+}
