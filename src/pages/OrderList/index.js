@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import useGlobal from "../../hooks/useGlobal";
 
 import useRequestOrder from '../../hooks/useRequestOrder'
 
@@ -6,6 +7,7 @@ function OrderList() {
     const [orders, setOrders] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
     const { get } = useRequestOrder();
+    const { setActualPage } = useGlobal();
 
     useEffect(() => {
         const resp = get('/order?page=0&size=100', true).then((response) => {
@@ -14,9 +16,12 @@ function OrderList() {
 
     }, [token])
 
+    useEffect(() => {
+        setActualPage("Lista de Pedidos");
+    }, [])
+
     return (
         <section>
-            <h1>Lista de Pedidos</h1>
             <div>
                 <table>
                     <thead>

@@ -12,6 +12,7 @@ function useGlobalProvider() {
     const [userId, setUserId, removeUserId] = useState()
     const [userGlobal, setUserGlobal] = useState()
     const [loggedAdm, setloggedAdm, removeloggedAdm] = useState()
+    const [actualPage, setActualPage] = useState("Login")
 
     const apiURL = {
         user: process.env.REACT_APP_API_USER_URL,
@@ -54,7 +55,9 @@ function useGlobalProvider() {
         setUserId, 
         removeUserId,
         userGlobal, 
-        setUserGlobal
+        setUserGlobal,
+        actualPage,
+        setActualPage,
     }
 
 }

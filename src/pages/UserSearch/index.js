@@ -1,6 +1,7 @@
 import Input from '../../components/form/Input'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import useGlobal from "../../hooks/useGlobal";
 
 import toast from '../../helpers/toast'
 
@@ -12,7 +13,11 @@ function UserSearch() {
     const [searchParam, setSearchParam] = useState({});
     const [searchResultView, setSearchResultView] = useState([]);
     const { getOne, searchUserByParams } = useRequestUser();
+    const { setActualPage } = useGlobal();
 
+    useEffect(() => {
+        setActualPage("Busca de Usuários");
+    }, [])
 
     function handleSubmitId(e) {
         e.preventDefault()
@@ -60,7 +65,6 @@ function UserSearch() {
 
     return (
         <section>
-            <h1>Busca de Usuários</h1>
 
             <fieldset className="form-group" onChange={(event) => setSearchParam(event.target.value)}>
                 <legend className="mt-4">Buscar</legend>

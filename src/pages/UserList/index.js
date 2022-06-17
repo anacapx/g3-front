@@ -17,7 +17,7 @@ import useRequestUser from '../../hooks/useRequestUser'
 function UserList() {
     const [users, setUsers] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
-    const { userId, setUserId, userGlobal, setUserGlobal } = useGlobal();
+    const { userId, setUserId, userGlobal, setUserGlobal, setActualPage } = useGlobal();
     const navigate = useNavigate()
     const { get, del } = useRequestUser();
 
@@ -26,6 +26,10 @@ function UserList() {
             setUsers(response)
         })
     }, [token])
+
+    useEffect(() => {
+        setActualPage("Lista de Usuários")
+    }, [])
 
     async function deleteUser(id) {
         const data = await del('/user', id, true)
@@ -50,7 +54,6 @@ function UserList() {
 
     return (
         <section>
-            <h1>Lista de Usuários</h1>
             <div>
                 <table>
                     <thead>

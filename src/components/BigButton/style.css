@@ -3,11 +3,11 @@
     background-color: #EA1D2C;
     color: #fff;
     border: none;
-    min-height: 2.5em;
+    min-height: 2.0em;
     width: 20em;
     height: 7em;
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 1.5em;
     font-weight: bold;
     text-decoration: none;
     display: flex;
@@ -20,6 +20,9 @@
 
 .btn-big:hover {
     background-color: #EF5753;
+}
 
+.btn-big:active {
+    background-color: #C41835;
 }
 
