@@ -1,0 +1,34 @@
+stages:
+  - build
+  #  - test
+  - docker
+  - deploy
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+
+react_build-job:
+  image: node:14-alpine
+  stage: build
+  before_script:
+    - echo "Installing dependencies..."
+    - npm install
+  script:
+    - echo "Building..."
+    - CI=false npm run-script build
+
+build-docker-job:
+  image: docker:latest
+  services:
+    - docker:18.09.7-dind
+  before_script:
+    - docker login -u ${CI_DOCKER_USER} -p ${CI_DOCKER_PASSWORD}
+  stage: docker
+  script:
+    - docker build -t ${URL_IMG_FRONT_DOCKER} -f Dockerfile .
+    - docker push ${URL_IMG_FRONT_DOCKER}
+
+deploy-k8s-job:
+  stage: deploy
+  script:
+    - echo "Deploying application..." #incluir scripts
