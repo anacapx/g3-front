@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom'
-import { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import styles from './Navbar.module.css'
 
@@ -9,10 +8,11 @@ import useGlobal from "../../hooks/useGlobal";
 
 function Navbar() {
   const { authenticated, logout } = useGlobal();
+  const navigate = useNavigate();
 
   return (
     <nav className={styles.navbar}>
-      <div className={styles.navbar_logo}>
+      <div className={styles.navbar_logo} onClick={() => navigate('/home')}>
         <img src={logo} alt="Kimchi" />
         <span>Kimchi</span>
       </div>
@@ -23,7 +23,7 @@ function Navbar() {
               <Link to="/">Home</Link>
           </li>
             <li>
-              <Link to="/user/page">Usuários</Link>
+              <Link to="/user/page">Clientes</Link>
             </li>
             <li>
               <Link to="/order/page">Pedidos</Link>
