@@ -3,15 +3,10 @@ import { useState, useContext } from 'react'
 import formStyles from '../../components/form/Form.module.css'
 
 import Input from '../../components/form/Input'
-import { Link } from 'react-router-dom'
-
-
-//import { Context } from '../../context/AuthContext'
 
 function UserForm({ handleSubmit, userData, btnText }) {
 
     const [user, setUser] = useState(userData || {});
-    //const { register } = useContext(Context)
 
     function handleChange(e) {
         setUser({ ...user, [e.target.name]: e.target.value })
@@ -55,7 +50,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="Telefone"
                 type="phone"
                 name="phone"
-                placeholder="Telephone"
+                placeholder="Telefone"
                 handleOnChange={handleChange}
                 value={user.phone || ''}
             />
