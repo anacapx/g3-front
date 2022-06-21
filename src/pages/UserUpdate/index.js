@@ -18,7 +18,7 @@ function UserUpdate() {
     const [user, setUser] = useState(userGlobal);
 
     useEffect(() => {
-        setActualPage("Alteração de Usuário");
+        setActualPage("Alteração de Cliente");
     }, [])    
 
     function handleChange(e) {
@@ -40,7 +40,7 @@ function UserUpdate() {
 
         if (resp) {
             navigate("/users");
-            toast.successMsg("Usuário alterado com sucesso");
+            toast.successMsg("Cliente alterado com sucesso");
         }
     }
 
@@ -49,7 +49,7 @@ function UserUpdate() {
             <UserForm
                 handleSubmit={updateUser}
                 userData={user}
-                btnText='Salvar Usuário'
+                btnText='Salvar Cliente'
             />
 
         </section>

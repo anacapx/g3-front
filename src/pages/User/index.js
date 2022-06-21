@@ -8,23 +8,23 @@ function User() {
     const { setActualPage } = useGlobal();
 
     useEffect(() => {
-        setActualPage("Pedidos");
+        setActualPage("Clientes");
     }, [])
 
     return (
         <section className='user_container' >
             <BigButton
-                text="Cadastrar Usuário"
+                text="Cadastrar Cliente"
                 link="/user/register"
             />
 
             <BigButton
-                text="Listar Usuários"
+                text="Listar Clientes"
                 link="/users"
             />
 
             <BigButton
-                text="Buscar Usuários"
+                text="Buscar Cliente"
                 link="/user/search"
             />
 

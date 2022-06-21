@@ -50,9 +50,10 @@ function OrderRegister() {
       <form onSubmit={handleSubmit}>
 
       <Input
-          text="Id do Usuário"
+          text="Id do Cliente"
           type="number"
           name="userId"
+          placeholder="Id do Cliente"
           value={userId}
           handleOnChange={handleChange}
         />
@@ -61,7 +62,7 @@ function OrderRegister() {
           text="Valor total"
           type="number"
           name="value"
-          placeholder=""
+          placeholder="Valor total"
           handleOnChange={handleChange}
         />
 
@@ -69,7 +70,7 @@ function OrderRegister() {
           text="Produtos"
           type="text"
           name="products"
-          placeholder=""
+          placeholder="Produtos"
           handleOnChange={handleChange}
         />
 

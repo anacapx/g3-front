@@ -17,7 +17,7 @@ function UserRegister() {
   const { setActualPage } = useGlobal();
 
   useEffect(() => {
-      setActualPage("Cadastro de Usuários");
+      setActualPage("Cadastro de Clientes");
   }, [])
 
   function handleChange(e) {
@@ -44,7 +44,7 @@ function UserRegister() {
 
     if (resp) {
       navigate("/users");
-      toast.successMsg("Usuário cadastrado com sucesso");
+      toast.successMsg("Cliente cadastrado com sucesso");
     }  
   }
 
@@ -53,7 +53,7 @@ function UserRegister() {
       <UserForm
         handleSubmit={AddUser}
         userData=''
-        btnText='Salvar Usuário'
+        btnText='Salvar Cliente'
       />
 
     </section>
