@@ -17,7 +17,7 @@ function Home() {
                 <main className="main">
                     {/* <span>Olá, Foodlover!</span> */}
                     <BigButton
-                        text="Usuários"
+                        text="Clientes"
                         link="/user/page"
                     />
 
