@@ -10,6 +10,7 @@ function useGlobalProvider() {
     const [token, setToken, removeToken] = useState(localStorage.getItem('token') || '')
     const [authenticated, setAuthenticated] = useState(false)
     const [userId, setUserId, removeUserId] = useState()
+    const [usersList, setUsersList] = useState([])
     const [userGlobal, setUserGlobal] = useState()
     const [loggedAdm, setloggedAdm, removeloggedAdm] = useState()
     const [actualPage, setActualPage] = useState("Login")
@@ -58,6 +59,8 @@ function useGlobalProvider() {
         setUserGlobal,
         actualPage,
         setActualPage,
+        usersList, 
+        setUsersList,
     }
 
 }
