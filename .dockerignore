@@ -1,7 +1,5 @@
-.git
-.env
-.DS_Store
-.idea
-.vscode
-node_modules/
 npm-debug.log
+.dockerignore
+**/.git
+**/.DS_Store
+**/node_modules

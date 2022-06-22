@@ -1,7 +1,6 @@
-FROM node:14-alpine
-WORKDIR /app
-COPY package.json ./
-COPY package-lock.json ./
-COPY ./ ./
-RUN npm install
-CMD ["npm", "start"]
+FROM nginx:stable-alpine
+#RUN mkdir g3-front
+#COPY . g3-front
+#RUN cd g3-front && npm install
+#RUN npm run build
+COPY build/ /usr/share/nginx/html
