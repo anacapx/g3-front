@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -11,11 +11,15 @@ import UserForm from '../../components/form/UserForm'
 import formStyles from '../../components/form/Form.module.css'
 
 function UserUpdate() {
-    const { userId, setUserId, userGlobal, setUserGlobal } = useGlobal();
+    const { userId, setUserId, userGlobal, setUserGlobal, setActualPage } = useGlobal();
     const { update } = useRequestUser();
     const navigate = useNavigate()
 
     const [user, setUser] = useState(userGlobal);
+
+    useEffect(() => {
+        setActualPage("Alteração de Cliente");
+    }, [])    
 
     function handleChange(e) {
         setUser({ ...user, [e.target.name]: e.target.value })
@@ -36,17 +40,16 @@ function UserUpdate() {
 
         if (resp) {
             navigate("/users");
-            toast.successMsg("Usuário alterado com sucesso");
+            toast.successMsg("Cliente alterado com sucesso");
         }
     }
 
     return (
         <section className={formStyles.form_container}>
-            <h1>Alteração de Usuário</h1>
             <UserForm
                 handleSubmit={updateUser}
                 userData={user}
-                btnText='Salvar Usuário'
+                btnText='Salvar Cliente'
             />
 
         </section>

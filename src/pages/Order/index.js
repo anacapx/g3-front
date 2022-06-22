@@ -1,4 +1,6 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
+
+import useGlobal from "../../hooks/useGlobal";
 
 import Input from '../../components/form/Input'
 import { Link } from 'react-router-dom'
@@ -11,10 +13,14 @@ import BigButton from '../../components/BigButton'
 
 function Order() {
 
+    const { setActualPage } = useGlobal();
+
+    useEffect(() => {
+        setActualPage("Pedidos");
+    }, [])
+
     return (
         <section >
-            <h1>Pedidos</h1>
-
             <BigButton
                 text="Cadastrar Pedido"
                 link="/order/register"

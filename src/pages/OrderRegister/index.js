@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useGlobal from "../../hooks/useGlobal";
 import Input from '../../components/form/Input'
@@ -10,7 +10,11 @@ import useRequestOrder from '../../hooks/useRequestOrder'
 
 function OrderRegister() {
 
-  const { userId, setUserId, removeUserId } = useGlobal();
+  useEffect(() => {
+    setActualPage("Cadastro de Pedidos");
+}, [])
+
+  const { userId, setUserId, removeUserId, setActualPage } = useGlobal();
 
   const { post } = useRequestOrder();
   const navigate = useNavigate()
@@ -43,13 +47,13 @@ function OrderRegister() {
 
   return (
     <section className={styles.form_container}>
-      <h1>Cadastro de Pedido</h1>
       <form onSubmit={handleSubmit}>
 
       <Input
-          text="Id do Usuário"
+          text="Id do Cliente"
           type="number"
           name="userId"
+          placeholder="Id do Cliente"
           value={userId}
           handleOnChange={handleChange}
         />
@@ -58,7 +62,7 @@ function OrderRegister() {
           text="Valor total"
           type="number"
           name="value"
-          placeholder=""
+          placeholder="Valor total"
           handleOnChange={handleChange}
         />
 
@@ -66,7 +70,7 @@ function OrderRegister() {
           text="Produtos"
           type="text"
           name="products"
-          placeholder=""
+          placeholder="Produtos"
           handleOnChange={handleChange}
         />
 

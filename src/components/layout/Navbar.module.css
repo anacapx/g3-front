@@ -1,29 +1,41 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: red;
+  background-color: #EA1D2C;
   border-bottom: 1px solid #aaa;
   padding: 1em;
   margin-bottom: 1em;
   color: white;
   font-weight: bold;
+  font-family: 'Sul Sans';
 }
 
 .navbar_logo {
   display: flex;
-  align-items: center;
+  align-items:flex-end;
+  justify-content:center;
+  cursor: pointer;
 }
 
 .navbar_logo img {
-  height: 3em;
+  height: 100px;
   margin-right: .7em;
+  margin-bottom: 4px;
+}
+
+.navbar_logo span {
+  padding-left: 10px;
+  font-size: 60px;
+  font-family: 'Sul Sans';
+  font-weight: 700;
 }
   
 .navbar ul {
   display: flex;
+  /* margin-top: 30px; */
   list-style: none;
-  align-items: center;
-  font-size: 1.2em;
+  align-items: flex-end;
+  font-size: 2.1em;
 }
   
 .navbar li {

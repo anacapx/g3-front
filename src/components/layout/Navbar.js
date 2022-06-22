@@ -1,34 +1,34 @@
-import { Link } from 'react-router-dom'
-import { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import styles from './Navbar.module.css'
 
-import logo from '../../assets/order-preto.png'
+import logo from '../../assets/kimchi-logo.png'
 
 import useGlobal from "../../hooks/useGlobal";
 
 function Navbar() {
   const { authenticated, logout } = useGlobal();
+  const navigate = useNavigate();
 
   return (
     <nav className={styles.navbar}>
-      <div className={styles.navbar_logo}>
+      <div className={styles.navbar_logo} onClick={() => navigate('/home')}>
         <img src={logo} alt="Kimchi" />
-        <h2>Kimchi</h2>
+        <span>Kimchi</span>
       </div>
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
         {authenticated ? (
           <>
             <li>
-              <Link to="/user/page">Usuários</Link>
+              <Link to="/">Home</Link>
+          </li>
+            <li>
+              <Link to="/user/page">Clientes</Link>
             </li>
             <li>
               <Link to="/order/page">Pedidos</Link>
             </li>
-            <li className={styles.pointer} onClick={logout}> Logout</li>
+            <li className={styles.pointer} onClick={logout}> Sair</li>
           </>
         ) : (
           <>

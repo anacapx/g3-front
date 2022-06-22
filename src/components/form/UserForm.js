@@ -3,15 +3,10 @@ import { useState, useContext } from 'react'
 import formStyles from '../../components/form/Form.module.css'
 
 import Input from '../../components/form/Input'
-import { Link } from 'react-router-dom'
-
-
-//import { Context } from '../../context/AuthContext'
 
 function UserForm({ handleSubmit, userData, btnText }) {
 
     const [user, setUser] = useState(userData || {});
-    //const { register } = useContext(Context)
 
     function handleChange(e) {
         setUser({ ...user, [e.target.name]: e.target.value })
@@ -28,7 +23,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="Nome"
                 type="text"
                 name="name"
-                placeholder=""
+                placeholder="Nome"
                 handleOnChange={handleChange}
                 value={user.name || ''}
             />
@@ -37,7 +32,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="E-mail"
                 type="email"
                 name="email"
-                placeholder=""
+                placeholder="E-mail"
                 handleOnChange={handleChange}
                 value={user.email || ''}
             />
@@ -46,7 +41,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="CPF"
                 type="number"
                 name="cpf"
-                placeholder=""
+                placeholder="CPF"
                 handleOnChange={handleChange}
                 value={user.cpf || ''}
             />
@@ -55,7 +50,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="Telefone"
                 type="phone"
                 name="phone"
-                placeholder=""
+                placeholder="Telefone"
                 handleOnChange={handleChange}
                 value={user.phone || ''}
             />
@@ -64,7 +59,7 @@ function UserForm({ handleSubmit, userData, btnText }) {
                 text="Data de nascimento"
                 type="date"
                 name="birthday"
-                placeholder=""
+                placeholder="Data de nascimento"
                 handleOnChange={handleChange}
                 value={user.birthday || ''}
             />

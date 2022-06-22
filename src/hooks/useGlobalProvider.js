@@ -10,8 +10,10 @@ function useGlobalProvider() {
     const [token, setToken, removeToken] = useState(localStorage.getItem('token') || '')
     const [authenticated, setAuthenticated] = useState(false)
     const [userId, setUserId, removeUserId] = useState()
+    const [usersList, setUsersList] = useState([])
     const [userGlobal, setUserGlobal] = useState()
     const [loggedAdm, setloggedAdm, removeloggedAdm] = useState()
+    const [actualPage, setActualPage] = useState("Login")
 
     const apiURL = {
         user: process.env.REACT_APP_API_USER_URL,
@@ -54,7 +56,11 @@ function useGlobalProvider() {
         setUserId, 
         removeUserId,
         userGlobal, 
-        setUserGlobal
+        setUserGlobal,
+        actualPage,
+        setActualPage,
+        usersList, 
+        setUsersList,
     }
 
 }

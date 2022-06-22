@@ -8,7 +8,7 @@ export default function useRequestOrder() {
   const { token } = useGlobal();
 
   async function post(route, body, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_ORDER_URL}${route}`,
@@ -23,21 +23,20 @@ export default function useRequestOrder() {
       )
 
       const dataObj = await response.json();
-
       if (!response.ok) {
-        throw new Error(dataObj);
+        throw new Error( dataObj.length > 0 ? dataObj[0].errorMessage : dataObj.message);
       }
 
       return dataObj
 
     } catch (error) {
-      toast.errorMsg(error.message)
+      toast.errorMsg(error.message);
     }
   }
 
 
   async function get(route, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_ORDER_URL}${route}`,
@@ -55,12 +54,12 @@ export default function useRequestOrder() {
       if (!response.ok) {
         throw new Error(dataObj);
       }
-      
+
       return dataObj
 
     } catch (error) {
-      toast.errorMsg(error.message)
-      
+      toast.errorMsg(error.message.errorMessage)
+
     }
   }
 

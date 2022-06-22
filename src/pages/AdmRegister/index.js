@@ -1,6 +1,7 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect } from 'react'
 
 import useRequestsAuth from '../../hooks/useRequestAuth'
+import useGlobal from "../../hooks/useGlobal";
 
 import toast from '../../helpers/toast'
 
@@ -15,7 +16,12 @@ function AdmRegister() {
     const { post } = useRequestsAuth();
     const navigate = useNavigate()
     const [adm, setAdm] = useState({});
+    const { setActualPage } = useGlobal();
     
+    useEffect(() => {
+        setActualPage("Cadastro de Administrador");
+    }, [])
+
     function handleChange(e) {
         setAdm({ ...adm, [e.target.name]: e.target.value })
     }
@@ -44,13 +50,12 @@ function AdmRegister() {
 
     return (
         <section className={styles.form_container}>
-            <h1>Cadastro de Administrador</h1>
             <form onSubmit={handleSubmit}>
                 <Input
                     text="Nome"
                     type="text"
                     name="name"
-                    placeholder=""
+                    placeholder="Nome"
                     handleOnChange={handleChange}
                 />
 
@@ -58,7 +63,7 @@ function AdmRegister() {
                     text="E-mail"
                     type="email"
                     name="email"
-                    placeholder=""
+                    placeholder="E-mail"
                     handleOnChange={handleChange}
                 />
 
@@ -66,7 +71,7 @@ function AdmRegister() {
                     text="Senha"
                     type="password"
                     name="password"
-                    placeholder=""
+                    placeholder="Senha"
                     handleOnChange={handleChange}
                 />
 
@@ -74,7 +79,7 @@ function AdmRegister() {
                     text="Confirme sua senha"
                     type="password"
                     name="confirmpassword"
-                    placeholder=""
+                    placeholder="Confirme sua senha"
                     handleOnChange={handleChange}
                 />
 
@@ -83,7 +88,7 @@ function AdmRegister() {
             </form>
 
             <p>
-                Já tem cadastro? <Link to="/login" >Faça Login</Link>
+                Já tem cadastro? <Link to="/login"><span className='p_span'>Faça Login</span></Link>
             </p>
         </section>
     )
