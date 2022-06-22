@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import useGlobal from "../../hooks/useGlobal";
 
 import { useNavigate } from 'react-router-dom'
 
@@ -12,8 +13,12 @@ import formStyles from '../../components/form/Form.module.css'
 function UserRegister() {
   const { post} = useRequestUser();
   const navigate = useNavigate()
-
   const [user, setUser] = useState({});
+  const { setActualPage } = useGlobal();
+
+  useEffect(() => {
+      setActualPage("Cadastro de Clientes");
+  }, [])
 
   function handleChange(e) {
     setUser({ ...user, [e.target.name]: e.target.value })
@@ -39,17 +44,16 @@ function UserRegister() {
 
     if (resp) {
       navigate("/users");
-      toast.successMsg("Usuário cadastrado com sucesso");
+      toast.successMsg("Cliente cadastrado com sucesso");
     }  
   }
 
   return (
     <section className={formStyles.form_container}>
-      <h1>Cadastro de Usuário</h1>
       <UserForm
         handleSubmit={AddUser}
         userData=''
-        btnText='Salvar Usuário'
+        btnText='Salvar Cliente'
       />
 
     </section>

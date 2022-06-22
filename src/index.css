@@ -1,16 +1,16 @@
 * {
-  font-family: Helvetica;
+  font-family: 'Sul Sans';
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-h1{
-  color:dimgray;
+h1 {
+  color: #696969;
   margin-bottom: 1em;
   font-size: 2.1em;
 }
 
-.bold{
+.bold {
   font-weight: bold;
 }

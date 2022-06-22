@@ -26,11 +26,11 @@ const Routes = () => {
     <>
       {!authenticated ? (
         <Switch>
-          <Route path="/home" element={<Home />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<AdmRegister />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Login />} />
         </Switch>
       ) : (
         <Switch>

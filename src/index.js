@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import Routes from "./routes";
+import "./helpers/pomodoroFonts/css/index.css";
 
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'

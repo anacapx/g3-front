@@ -9,7 +9,7 @@ export default function useRequestUser() {
   const { token } = useGlobal();
 
   async function post(route, body, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}`,
@@ -37,7 +37,7 @@ export default function useRequestUser() {
 
 
   async function get(route, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}`,
@@ -64,8 +64,65 @@ export default function useRequestUser() {
     }
   }
 
+  async function getOne(route, id, withToken) {
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            ...config,
+          },
+          body: null,
+        }
+      )
+      // atenção => se não tiver resposta do back, vai pro catch
+      const dataObj = await response.json();
+
+      if (!response.ok) {
+        throw new Error(dataObj.message);
+      }
+
+      return dataObj
+
+    } catch (error) {
+      toast.errorMsg(error.message)
+
+    }
+  }
+
+  async function searchUserByParams(route, searchParam, search, withToken) {
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
+    http://minhaapi.com/banks?name=nubank
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}/search?${searchParam}=${search}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            ...config,
+          },
+          body: null,
+        }
+      )
+      const dataObj = await response.json();
+
+      if (!response.ok) {
+        throw new Error(dataObj.message);
+      }
+
+      return dataObj
+
+    } catch (error) {
+      toast.errorMsg(error.message)
+
+    }
+  }
+
   async function del(route, id, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
     try {
       const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}/${id}`,
         {
@@ -88,7 +145,7 @@ export default function useRequestUser() {
   }
 
   async function update(route, body, id, withToken) {
-    const config = withToken ? { Authorization: `${JSON.parse(token)}` } : {};
+    const config = withToken ? { Authorization: `Bearer ${JSON.parse(token)}` } : {};
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_USER_URL}${route}/${id}`,
@@ -101,14 +158,14 @@ export default function useRequestUser() {
           body: JSON.stringify(body),
         }
       )
-      
+
       if (!response.ok) {
         const dataObj = await response.json();
         throw new Error(dataObj.message);
       }
-      
+
       return response
-      
+
     } catch (error) {
       toast.errorMsg(error.message)
     }
@@ -119,7 +176,9 @@ export default function useRequestUser() {
     post,
     get,
     del,
-    update
+    update,
+    getOne,
+    searchUserByParams
   }
 
 }
