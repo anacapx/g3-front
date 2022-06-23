@@ -69,8 +69,6 @@ Funcionalidades que o sistema oferece:
 	
 ## 📱 Telas 
 
-Nesta seção serão exibidas as telas do sistema e sua navegabilidade.
-
 ### 🔑️ Login de Admin
 <p align="center">
 <img src="https://scontent.fcgh8-1.fna.fbcdn.net/v/t39.30808-6/289990676_1831781257018313_8581648486284251166_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeE-0LqmFETs3s69e3qqhnQB-emyVUEpXLb56bJVQSlctm_gCDiZCK8ZIsP7ZwJ6xudSmnThU806CoyGSaZV6RYO&_nc_ohc=yUL-4diIYt4AX-Zp3uN&_nc_ht=scontent.fcgh8-1.fna&oh=00_AT8IDjoIxI0_8SEt95O_TlgazWWa-5xE09laSnAfyK87Bg&oe=62BABE49" title="tela de login" width="400" />
